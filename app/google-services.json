@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "18554089541",
+    "project_id": "exchanges-app-ca403",
+    "storage_bucket": "exchanges-app-ca403.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:18554089541:android:23bb964292a688af3db32c",
+        "android_client_info": {
+          "package_name": "com.aleor.exchangesapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "18554089541-7l5hncqur8m6ovoekcvg90uptitmnqtr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClt1uLZlk7dFY0lcqk86zSWRAsTTNsmFI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "18554089541-7l5hncqur8m6ovoekcvg90uptitmnqtr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
