@@ -2,6 +2,20 @@
     <string name="app_name">UNOxOTRO</string>
     <string name="login">¿Listo para comenzar?</string>
     <string name="LogIn">INICIAR SESION</string>
-    <string name="NoUser">No tienes cuenta?</string>
+    <string name="NoUser">¿No tienes cuenta?</string>
     <string name="SignUp">REGISTRARSE</string>
+    <string name="nombre_label">Nombre</string>
+    <string-array name="Facultades">
+        <item>-Seleccione una facultad-</item>
+        <item>Facultad de Ingenieria Mecanica y Electrica</item>
+        <item>Facultad de contaduria Publica y Administraciòn</item>
+        <item>Facultad de Arquitectura</item>
+        <item>Facultad de Ingenieria Civil</item>
+        <item>Facultad de Derecho y Criminologia</item>
+        <item>Facultad de Ciencias Fisico Matematico</item>
+        <item>Facultad de Organizaciòn Deportiva</item>
+        <item>Facultad de Trabajo Social</item>
+        <item>Facultad de Ciencias Quimica</item>
+        <item>Facultad de Ciencias Biologicas</item>
+    </string-array>
 </resources>

@@ -7,11 +7,14 @@
     tools:context=".activities.HomeActivity">
 
 
- <TextView
+
+ <Button
      android:layout_width="wrap_content"
      android:layout_height="wrap_content"
-     android:text="Home Page"
-     android:layout_gravity="center"/>
+     android:text="NUEVO PRODUCTO"
+     android:layout_gravity="center"
+     android:id="@+id/goToForms"
+     />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

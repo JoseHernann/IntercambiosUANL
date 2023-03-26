@@ -1,5 +1,6 @@
 package com.aleor.exchangesapp.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.aleor.exchangesapp.databinding.ActivityHomeBinding
@@ -13,5 +14,10 @@ class HomeActivity : AppCompatActivity() {
 
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.goToForms.setOnClickListener {
+            val intent =  Intent(this, FormsActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
