@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">UNOxOTRO</string>
-    <string name="login">LOGIN</string>
+    <string name="login">¿Listo para comenzar?</string>
     <string name="LogIn">INICIAR SESION</string>
     <string name="NoUser">No tienes cuenta?</string>
     <string name="SignUp">REGISTRARSE</string>
