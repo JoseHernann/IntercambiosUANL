@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <ScrollView android:layout_width="match_parent"
+            android:layout_height="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/greyBackground"
+            android:orientation="vertical"
+
+            >
+
+            <TextView
+                android:id="@+id/tvLabelNombre"
+                style="@style/AppTheme.BasicLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/nombre_label"
+                app:layout_constraintBottom_toTopOf="@+id/etProductName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+                />
+
+            <EditText
+                android:id="@+id/etProductName"
+                style="@style/AppTheme.BasicInput"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:autofillHints="nombre"
+                app:layout_constraintBottom_toTopOf="@id/tvLabelPhotos"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvLabelNombre"
+
+
+                />
+
+            <TextView
+                android:id="@+id/tvLabelPhotos"
+                style="@style/AppTheme.BasicLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Imagenes del producto"
+                app:layout_constraintBottom_toTopOf="@id/pickImage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etProductName"
+
+                />
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/imageRV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="15dp"
+                        style="@style/AppTheme.BasicInput"
+                        />
+
+                    <ImageButton
+                        android:id="@+id/pickImage"
+                        style="@style/AppTheme.BasicInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="170dp"
+                        android:src="@drawable/addpic_icon"
+                        />
+                </FrameLayout>
+
+            <TextView
+                android:id="@+id/tvLabelDescription"
+                style="@style/AppTheme.BasicLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Descripciòn"
+                />
+
+            <EditText
+                android:id="@+id/etDescription"
+                style="@style/AppTheme.BasicInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textMultiLine"
+                android:minHeight="70dp" />
+
+            <TextView
+                android:id="@+id/tvLabelCategoria"
+                style="@style/AppTheme.BasicLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Categoria"
+                />
+
+            <Spinner
+                android:id="@+id/list_facu"
+                style="@style/AppTheme.BasicInput"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:spinnerMode="dropdown" />
+
+            <TextView
+                android:id="@+id/tvLabelEstado"
+                style="@style/AppTheme.BasicLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Estado del articulo"
+                />
+
+
+            <LinearLayout
+                android:id="@+id/llayout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:padding="20dp"
+                android:textAlignment="center"
+                >
+
+                <Button
+                    android:id="@+id/btnEstadoNuevo"
+                    style="@style/AppTheme.BasicInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nuevo  "
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textColor="#707070"
+                    android:layout_marginBottom="2dp"
+                    />
+
+                <Button
+                    android:id="@+id/btnEstadoSeminuevo"
+                    style="@style/AppTheme.BasicInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Seminuevo    "
+                    android:textAllCaps="false"
+                    android:textColor="#707070"
+                    android:layout_marginBottom="2dp"
+                    />
+
+                <Button
+                    android:id="@+id/btnEstadoUsado"
+                    style="@style/AppTheme.BasicInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Usado  "
+                    android:textAllCaps="false"
+                    android:textColor="#707070"
+                    android:layout_marginBottom="2dp"
+
+                    />
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/btnGuardar"
+                style="@style/AppTheme.PrimaryButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/basic_input"
+                android:text="Guardar"
+                />
+
+            <Button
+                android:id="@+id/btnCancelar"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/basic_input"
+                android:text="Cancelar"
+                />
+
+
+        </LinearLayout>
+    </ScrollView>
