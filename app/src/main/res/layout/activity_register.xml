@@ -14,7 +14,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/principal"
+            android:src="@drawable/register"
             android:scaleType="centerCrop"/>
         <View
             android:layout_width="match_parent"
@@ -26,10 +26,10 @@
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="550dp"
         android:layout_gravity="center"
         android:layout_marginLeft="3dp"
-        android:layout_marginTop="230dp"
+        android:layout_marginTop="170dp"
         android:layout_marginRight="3dp">
 
         <View
