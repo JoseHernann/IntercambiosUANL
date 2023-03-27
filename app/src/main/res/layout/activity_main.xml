@@ -28,11 +28,11 @@
     </FrameLayout>
 
     <FrameLayout
-        android:layout_marginTop="230dp"
+        android:layout_marginTop="250dp"
         android:layout_width="match_parent"
         android:layout_height="480dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
         android:layout_gravity="center"
         >
 
@@ -50,12 +50,12 @@
 
 
             <TextView
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/login"
                 android:textColor="@color/white"
-                android:textSize="25sp"
+                android:textSize="30sp"
                 android:textStyle="bold"
                 android:textAlignment="center"/>
             <TextView
@@ -72,8 +72,8 @@
                 android:layout_marginTop="25dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="70dp"
-                android:layout_marginRight="70dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="60dp"
                 app:startIconDrawable="@drawable/ic_email_white"
                 app:startIconTint="@color/white">
 
@@ -89,8 +89,8 @@
             </com.google.android.material.textfield.TextInputLayout><com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="70dp"
-            android:layout_marginRight="70dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
             app:startIconDrawable="@drawable/ic_lock_white"
             app:startIconTint="@color/white">
 
@@ -111,7 +111,7 @@
                 android:text="@string/LogIn"
                 android:layout_marginRight="70dp"
                 android:layout_marginLeft="70dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="40dp"
                 android:background="@drawable/rounded_button"
                 android:textColor="@color/white"/>
 

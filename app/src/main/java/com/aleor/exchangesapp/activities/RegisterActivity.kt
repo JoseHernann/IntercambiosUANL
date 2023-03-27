@@ -4,8 +4,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.WindowManager
+import android.widget.AdapterView
+import android.widget.Spinner
 import android.widget.Toast
+import com.aleor.exchangesapp.R
 import com.aleor.exchangesapp.databinding.ActivityRegisterBinding
 import com.aleor.exchangesapp.models.Client
 import com.aleor.exchangesapp.providers.AuthProvider
@@ -16,6 +20,7 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
     private val authProvider = AuthProvider()
     private val clientProvider = ClientProvider()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,21 +36,17 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun register(){
         val name = binding.textFieldName.text.toString()
-        val lastname = binding.textFieldLastname.text.toString()
         val email = binding.textFieldEmail.text.toString()
-        val phone = binding.textFieldPhone.text.toString()
         val password = binding.textFieldPassword.text.toString()
         val confirmPassword = binding.textFieldConfirmPassword.text.toString()
 
-        if(isValidForm(name, lastname, email, phone, password, confirmPassword)){
+        if(isValidForm(name, email, password, confirmPassword)){
 
             authProvider.register(email, password).addOnCompleteListener { it ->
                 if(it.isSuccessful){
                     val client = Client(
                         id = authProvider.getId(),
                         name = name,
-                        lastname = lastname,
-                        phone = phone,
                         email = email
                     )
                     clientProvider.create(client).addOnCompleteListener {
@@ -78,22 +79,14 @@ class RegisterActivity : AppCompatActivity() {
 //        startActivity(i)
 //    }
 
-    private fun isValidForm (name: String, lastname: String, email: String, phone: String, password: String, confirmPassword: String): Boolean {
+    private fun isValidForm (name: String, email: String, password: String, confirmPassword: String): Boolean {
 
         if (name.isEmpty()){
             Toast.makeText(this, "Debes ingresar tu nombre", Toast.LENGTH_SHORT).show()
             return false
         }
-        if(lastname.isEmpty()){
-            Toast.makeText(this, "Debes ingresar tu apellido", Toast.LENGTH_SHORT).show()
-            return false
-        }
         if(email.isEmpty()){
             Toast.makeText(this, "Debes ingresar tu correo", Toast.LENGTH_SHORT).show()
-            return false
-        }
-        if(phone.isEmpty()){
-            Toast.makeText(this, "Es necesario ingresar tu telefono", Toast.LENGTH_SHORT).show()
             return false
         }
         if(password.isEmpty()){

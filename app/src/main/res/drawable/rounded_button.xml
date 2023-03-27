@@ -2,10 +2,10 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
 
     <corners android:radius="50dp"/>
-<<<<<<< HEAD
+
     <solid android:color="@color/violet"/>
-=======
+
     <solid android:color="@color/primPurple"/>
->>>>>>> 4091cd9deae33fbb752db0367d632fa6a28f973a
+
 
 </shape>
