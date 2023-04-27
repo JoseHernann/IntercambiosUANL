@@ -8,6 +8,18 @@
 
 
 
+ <ImageView
+     android:id="@+id/logo_imageview"
+     android:layout_width="170dp"
+     android:layout_height="30dp"
+     android:layout_marginStart="20dp"
+     android:layout_marginTop="12dp"
+     android:scaleType="fitStart"
+     android:src="@drawable/logo"
+     app:layout_anchorGravity="top|start" />
+
+
+
 
  <com.google.android.material.bottomnavigation.BottomNavigationView
      android:id="@+id/bottom_navigation_view"
