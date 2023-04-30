@@ -7,12 +7,19 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="@color/greyBackground"
             android:orientation="vertical"
 
             >
-
+            <ImageButton
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/baseline_arrow_back_ios_new_24"
+                android:padding="5dp"
+                android:background="@color/greyBackground"
+                />
             <TextView
                 android:id="@+id/tvLabelNombre"
                 style="@style/AppTheme.BasicLabel"
@@ -36,9 +43,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvLabelNombre"
-
-
-                />
+                android:inputType="text" />
 
             <TextView
                 android:id="@+id/tvLabelPhotos"
@@ -78,7 +83,7 @@
                 style="@style/AppTheme.BasicLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Descripciòn"
+                android:text="Descripción"
                 />
 
             <EditText
@@ -99,7 +104,7 @@
                 />
 
             <Spinner
-                android:id="@+id/list_facu"
+                android:id="@+id/list_cat"
                 style="@style/AppTheme.BasicInput"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -110,65 +115,67 @@
                 style="@style/AppTheme.BasicLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Estado del articulo"
-                />
+                android:text="Estado del articulo" />
 
 
-            <LinearLayout
-                android:id="@+id/llayout"
+            <RadioGroup
+                android:id="@+id/grupEstado"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:gravity="center"
                 android:layout_gravity="center"
-                android:padding="20dp"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp"
                 android:textAlignment="center"
                 >
 
-                <Button
-                    android:id="@+id/btnEstadoNuevo"
-                    style="@style/AppTheme.BasicInput"
-                    android:layout_width="match_parent"
+                <RadioButton
+                    android:id="@+id/radioNuevo"
+                    style="@style/AppTheme.SelectableButon"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nuevo  "
+                    android:text="Nuevo"
                     android:textAlignment="center"
                     android:textAllCaps="false"
                     android:textColor="#707070"
                     android:layout_marginBottom="2dp"
+                    android:padding="5dp"
                     />
 
-                <Button
-                    android:id="@+id/btnEstadoSeminuevo"
-                    style="@style/AppTheme.BasicInput"
-                    android:layout_width="match_parent"
+                <RadioButton
+                    android:id="@+id/radioSeminuevo"
+                    style="@style/AppTheme.SelectableButon"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Seminuevo    "
+                    android:text="Seminuevo"
                     android:textAllCaps="false"
                     android:textColor="#707070"
                     android:layout_marginBottom="2dp"
+                    android:padding="5dp"
                     />
 
-                <Button
-                    android:id="@+id/btnEstadoUsado"
-                    style="@style/AppTheme.BasicInput"
-                    android:layout_width="match_parent"
+                <RadioButton
+                    android:id="@+id/radioUsado"
+                    style="@style/AppTheme.SelectableButon"
+                    android:layout_width="94dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
                     android:text="Usado  "
                     android:textAllCaps="false"
                     android:textColor="#707070"
-                    android:layout_marginBottom="2dp"
+                    android:padding="5dp"/>
 
-                    />
 
-                <Button
-                    android:id="@+id/btnGuardar"
-                    style="@style/AppTheme.PrimaryButtonStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:background="@drawable/basic_input"
-                    android:text="Guardar" />
-            </LinearLayout>
+            </RadioGroup>
 
+            <Button
+                android:id="@+id/btnGuardar"
+                style="@style/AppTheme.PrimaryButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/basic_input"
+                android:text="Guardar" />
 
             <Button
                 android:id="@+id/btnCancelar"

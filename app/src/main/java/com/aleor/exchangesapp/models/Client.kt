@@ -15,4 +15,6 @@ data class Client (
     companion object {
         public fun fromJson(json: String) = klaxon.parse<Client>(json)
     }
+
+
 }

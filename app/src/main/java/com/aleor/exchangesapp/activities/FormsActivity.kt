@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +18,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.aleor.exchangesapp.R
 import com.aleor.exchangesapp.databinding.ActivityFormsBinding
+import com.aleor.exchangesapp.models.Client
+import com.aleor.exchangesapp.models.Products
+import com.aleor.exchangesapp.providers.ClientProvider
 import com.bumptech.glide.Glide
 
 
@@ -25,6 +29,12 @@ class FormsActivity : AppCompatActivity() {
     private lateinit var imageRV: RecyclerView
     private lateinit var imageAdapter: ImageAdapter
     private var imagesSelected = false
+    private val clientProvider = ClientProvider()
+
+    var canSave: Boolean = true
+    private var state: String = ""
+    var category: String = ""
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,10 +42,56 @@ class FormsActivity : AppCompatActivity() {
         binding = ActivityFormsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnCancelar.setOnClickListener {
-            val intent =  Intent(this, HomeActivity::class.java)
-            startActivity(intent)
+       val grupEstado = binding.grupEstado
+        grupEstado.setOnCheckedChangeListener{
+            grup, checkedId ->
+            state = when(checkedId) {
+                R.id.radioNuevo -> "Nuevo"
+                R.id.radioUsado -> "Usado"
+                R.id.radioSeminuevo -> "Seminuevo"
+                else -> ""
+            }
         }
+
+        //ESTO SE PODRIA MODIFICAR CREO
+        binding.back.setOnClickListener{
+            backToHome()
+        }
+        binding.btnCancelar.setOnClickListener {
+            backToHome()
+        }
+
+        val spinner: Spinner = binding.listCat
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.Categorias,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinner.adapter = adapter
+        }
+
+        //listener del dropDown
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+               category = parent.getItemAtPosition(position) as String
+                canSave = true
+            }
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                canSave = false
+            }
+        }
+
+        binding.btnGuardar.setOnClickListener{
+            if(canSave) {
+                saveProduct()
+
+            }
+            else{
+                println("NO SE PUEDE GUARDAR")
+            }
+        }
+
 
         imageRV = findViewById(R.id.imageRV)
         imageAdapter = ImageAdapter()
@@ -56,26 +112,6 @@ class FormsActivity : AppCompatActivity() {
             )
         }
 
-        val spinner: Spinner = findViewById(R.id.list_facu)
-        ArrayAdapter.createFromResource(
-            this,
-            R.array.Facultades,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spinner.adapter = adapter
-        }
-        //listener del dropDown
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-                val selectedItem = parent.getItemAtPosition(position) as String
-                //Toast.makeText(this@MainActivity, "Seleccionaste $selectedItem", Toast.LENGTH_SHORT).show()
-            }
-            override fun onNothingSelected(parent: AdapterView<*>) {
-                // No hacer nada
-            }
-        }
-
         // Asignar listener del botón para seleccionar imágenes
         binding.pickImage.setOnClickListener {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -91,6 +127,32 @@ class FormsActivity : AppCompatActivity() {
                 )
             }
         }
+    }
+
+    private fun saveProduct() {
+        val name = binding.etProductName.text.toString()
+        val description = binding.etDescription.text.toString()
+
+        val product = Products(
+            name = name,
+            category = category,
+            description = description,
+            sate = state
+        )
+        clientProvider.create(product).addOnCompleteListener {
+            if(it.isSuccessful){
+                Toast.makeText(this@FormsActivity, "Registro exitoso", Toast.LENGTH_SHORT).show()
+                backToHome()
+            }
+            else{
+                Toast.makeText(this@FormsActivity, "Hubo un error almacenando los datos ${it.exception.toString()}", Toast.LENGTH_SHORT).show()
+                Log.d("FIREBASE", "Error: ${it.exception.toString()}")
+            }
+        }
+    }
+    private fun backToHome(){
+        val intent =  Intent(this, HomeActivity::class.java)
+        startActivity(intent)
     }
 
     //Seleccion de imagenes
