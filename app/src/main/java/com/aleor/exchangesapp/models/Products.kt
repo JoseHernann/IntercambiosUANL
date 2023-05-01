@@ -6,7 +6,8 @@ data class Products(
     val name: String? = null,
     val description: String? = null,
     val category: String? = null,
-    val sate: String? = null
+    val sate: String? = null,
+    val userEmail:String? = null
 ){
 
     fun toJson() = klaxon.toJsonString(this)

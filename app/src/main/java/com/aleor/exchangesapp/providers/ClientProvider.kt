@@ -8,16 +8,8 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class ClientProvider {
-
     private val clientsCollection = Firebase.firestore.collection("Clients")
-    private val productCollection = Firebase.firestore.collection("Products")
     fun create(client: Client): Task<Void> {
         return clientsCollection.document(client.id!!).set(client)
     }
-
-    fun create(product: Products): Task<DocumentReference> {
-        return productCollection.add(product)
-    }
-
-
 }
