@@ -81,7 +81,7 @@ class RegisterActivity : AppCompatActivity() {
 
 
 
-    //Ingreso de los datos con validaciones en caso de que alguno no sea llenado no se realizara el registro 
+    //Ingreso de los datos con validaciones en caso de que alguno no sea llenado no se realizara el registro
     private fun isValidForm (name: String, email: String, password: String, confirmPassword: String): Boolean {
 
         if (name.isEmpty()){
