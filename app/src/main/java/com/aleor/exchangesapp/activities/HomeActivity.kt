@@ -99,10 +99,9 @@ class HomeActivity : AppCompatActivity() {
                 category.text = product.category
                 faculty.text = product.faculty
                 // Cargar imagen desde Firebase Storage
-                for (products in productList) {
-                    val storageRef = Firebase.storage.reference.child("/${products.id}")
-                    println(storageRef)
-                    println("PID: ${products.id}")
+                    val storageRef = Firebase.storage.reference.child("/${product.id}")
+                    /*println(storageRef)
+                    println("PID: ${products.id}")*/
                     storageRef.listAll().addOnSuccessListener { listResult ->
                         if (listResult.items.isNotEmpty()) {
                             val firstImageRef = listResult.items.first()
@@ -113,8 +112,6 @@ class HomeActivity : AppCompatActivity() {
                             }
                         }
                     }
-                }
-
             }
         }
 
