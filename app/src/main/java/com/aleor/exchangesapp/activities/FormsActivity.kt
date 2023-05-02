@@ -41,10 +41,13 @@ class FormsActivity : AppCompatActivity() {
     private val myAuth = FirebaseAuth.getInstance()
     private val db = Firebase.firestore
     private val products = db.collection("Products")
+    private val users = db.collection("Clients")
     private val newProductRef = products.document()
-    val storage = Firebase.storage
+    private val storage = Firebase.storage
     val productosStorageRef = storage.reference.child("productos")
     val newProductId = newProductRef.id
+    private val userEmail = myAuth.currentUser?.email
+
 
 
     private var state: String = "none"
@@ -52,8 +55,7 @@ class FormsActivity : AppCompatActivity() {
     private var isLoading:Boolean = false
     private var name:String = ""
     private var description:String = ""
-
-
+    private var faculty = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -61,9 +63,6 @@ class FormsActivity : AppCompatActivity() {
         setContentView(binding.root)
         /*BOTONES PARA REGRESAR A HOME*/
         binding.back.setOnClickListener{
-            backToHome()
-        }
-        binding.btnCancelar.setOnClickListener {
             backToHome()
         }
         binding.btnGuardar.setOnClickListener{
@@ -99,6 +98,15 @@ class FormsActivity : AppCompatActivity() {
             }
         }
 
+        users
+            .whereEqualTo("email", userEmail)
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    faculty = document.getString("faculty").toString()
+                }
+            }
+
         //im
         setupImageRecyclerView()
         requestGalleryPermission()
@@ -118,13 +126,15 @@ class FormsActivity : AppCompatActivity() {
         name = binding.etProductName.text.toString()
         description = binding.etDescription.text.toString()
 
-        val userEmail = myAuth.currentUser?.email
+
+
         val newProduct = hashMapOf(
             "name" to name,
             "description" to description,
             "category" to category,
             "state" to state,
-            "userEmail" to userEmail
+            "userEmail" to userEmail,
+            "faculty" to faculty
         )
 
         if(name != "" && description != "" && category != "-Seleccione una categoria-" && state != "none"){
