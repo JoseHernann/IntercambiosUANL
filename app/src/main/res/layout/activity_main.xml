@@ -112,7 +112,7 @@
                 android:layout_marginRight="70dp"
                 android:layout_marginLeft="70dp"
                 android:layout_marginTop="40dp"
-                android:background="@drawable/rounded_button"
+                android:background="@drawable/rounded_violet"
                 android:textColor="@color/white"/>
 
             <LinearLayout
@@ -151,7 +151,7 @@
                 android:layout_marginRight="70dp"
                 android:layout_marginLeft="70dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/rounded_button"
+                android:background="@drawable/rounded_violet"
                 app:backgroundTint="@color/white"/>
 
 

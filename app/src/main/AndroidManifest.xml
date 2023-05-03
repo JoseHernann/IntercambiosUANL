@@ -34,6 +34,10 @@
         <activity
             android:name=".activities.FormsActivity"
             android:exported="false" />
+        <activity
+            android:name=".activities.DetailActivity"
+            android:label="Detail Activity" />
+
     </application>
 
 </manifest>
