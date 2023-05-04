@@ -101,6 +101,7 @@ class RegisterActivity : AppCompatActivity() {
 
 
 
+
     //Ingreso de los datos con validaciones en caso de que alguno no sea llenado no se realizara el registro 
     private fun isValidForm (
         name: String,
@@ -109,6 +110,7 @@ class RegisterActivity : AppCompatActivity() {
         confirmPassword: String,
         faculty: String
     ): Boolean {
+
 
         if (name.isEmpty()){
             Toast.makeText(this, "Debes ingresar tu nombre", Toast.LENGTH_SHORT).show()
