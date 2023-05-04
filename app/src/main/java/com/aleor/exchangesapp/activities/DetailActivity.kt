@@ -38,7 +38,7 @@ class DetailActivity: AppCompatActivity() {
         val userFac = binding.userFac
         var userEmail:String = ""
         var faculty = ""
-
+        var name = ""
         binding.back.setOnClickListener{
             backToHome()
         }
@@ -68,6 +68,8 @@ class DetailActivity: AppCompatActivity() {
                                     for (documentUsers in documents) {
                                         faculty = documentUsers.getString("faculty").toString()
                                         userFac.text = faculty
+                                        name = documentUsers.getString("name").toString()
+                                        userName.text = name
                                     }
                                 }
                         }

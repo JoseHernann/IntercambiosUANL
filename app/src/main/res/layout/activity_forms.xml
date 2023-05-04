@@ -130,26 +130,24 @@
 
             <RadioGroup
                 android:id="@+id/grupEstado"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
+                android:layout_width="366dp"
+                android:layout_height="wrap_content"
+
                 android:gravity="center"
-                android:layout_gravity="center"
-                android:paddingEnd="20dp"
-                android:paddingStart="20dp"
-                android:textAlignment="center"
-                >
+                android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/radioNuevo"
                     style="@style/AppTheme.SelectableButon"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:layout_marginBottom="2dp"
+                    android:padding="5dp"
                     android:text="Nuevo"
                     android:textAlignment="center"
                     android:textAllCaps="false"
                     android:textColor="#707070"
-                    android:layout_marginBottom="2dp"
 
 
                     />
@@ -159,25 +157,22 @@
                     style="@style/AppTheme.SelectableButon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Seminuevo"
-                    android:textAllCaps="false"
-                    android:textColor="#707070"
                     android:layout_marginBottom="2dp"
                     android:padding="5dp"
-                    />
+                    android:text="Seminuevo"
+                    android:textAllCaps="false"
+                    android:textColor="#707070" />
 
                 <RadioButton
                     android:id="@+id/radioUsado"
                     style="@style/AppTheme.SelectableButon"
-                    android:layout_width="94dp"
+                    android:layout_width="93dp"
                     android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
                     android:layout_marginBottom="2dp"
-                    android:text="Usado  "
+                    android:text="Usado"
                     android:textAllCaps="false"
-                    android:textColor="#707070"
-                    />
-
-
+                    android:textColor="#707070" />
             </RadioGroup>
 
             <Button
@@ -187,8 +182,6 @@
                 android:layout_height="50dp"
                 android:background="@drawable/basic_input"
                 android:text="Guardar" />
-
-
 
 
         </LinearLayout>
