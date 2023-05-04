@@ -27,4 +27,6 @@
         <item>Gaming</item>
         <item>Plantas</item>
     </string-array>
+    <string name="placeholderMsg">message...</string>
+    <string name="btnSend">Enviar</string>
 </resources>

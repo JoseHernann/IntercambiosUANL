@@ -7,15 +7,17 @@
     tools:context=".activities.HomeActivity">
 
 
- <ImageView
-     android:id="@+id/logo_imageview"
-     android:layout_width="170dp"
-     android:layout_height="30dp"
-     android:layout_marginStart="20dp"
-     android:layout_marginTop="12dp"
-     android:scaleType="fitStart"
-     android:src="@drawable/logo"
-     app:layout_anchorGravity="top|start" />
+
+        <ImageView
+            android:id="@+id/logo_imageview"
+            android:layout_width="170dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="12dp"
+            android:scaleType="fitStart"
+            android:src="@drawable/logo"/>
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -24,19 +26,21 @@
         android:scrollbars="vertical"
         android:layout_marginTop="60dp"
         android:layout_marginBottom="61dp"
+
      />
 
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
-
- <com.google.android.material.bottomnavigation.BottomNavigationView
-     android:id="@+id/bottom_navigation_view"
-     android:layout_width="match_parent"
-     android:layout_height="wrap_content"
-     android:layout_gravity="bottom"
-     android:background="@color/softPurple"
-     app:menu="@menu/bottom_navigation_menu"
-     />
-
-
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/white"
+        app:menu="@menu/bottom_navigation_menu" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

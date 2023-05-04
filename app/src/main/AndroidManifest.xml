@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -14,8 +18,14 @@
         android:theme="@style/Theme.ExchangesApp"
         tools:targetApi="31">
         <activity
-            android:name=".UserProfile"
+            android:name=".activities.MapActivity"
             android:exported="false" />
+        <activity
+            android:name=".activities.ChatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.UserProfile"
+            android:exported="true" />
         <activity
             android:name=".activities.HomeActivity"
             android:exported="false" />
@@ -34,6 +44,11 @@
         <activity
             android:name=".activities.FormsActivity"
             android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAMwpW9wuqBUpwHMPj0CLQMSVRcSItdgMg"/>
+
     </application>
 
 </manifest>

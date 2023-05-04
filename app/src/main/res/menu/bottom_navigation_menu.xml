@@ -12,9 +12,8 @@
         android:title="Mapa" />
     <item
         android:id="@+id/menu_add"
-        android:icon="@drawable/ic_add_circle"
-        android:title="Add" />
-
+        android:icon="@drawable/ic_add_white"
+        android:title="Mapa" />
     <item
         android:id="@+id/menu_chat"
         android:icon="@drawable/ic_chat_white"

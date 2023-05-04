@@ -1,5 +1,6 @@
 package com.aleor.exchangesapp.activities
 
+
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.Rect
@@ -70,6 +71,10 @@ class HomeActivity : AppCompatActivity() {
                     val intent = Intent(this, HomeActivity::class.java)
                     startActivity(intent)
                     true
+                }R.id.menu_map -> {
+                    val intent = Intent(this, MapActivity::class.java)
+                    startActivity(intent)
+                    true
                 }
                 R.id.menu_add -> {
                     val intent = Intent(this, FormsActivity::class.java)
@@ -79,6 +84,10 @@ class HomeActivity : AppCompatActivity() {
                 R.id.menu_profile -> {
 
                     val intent = Intent(this, UserProfile::class.java)
+                    startActivity(intent)
+                    true
+                }R.id.menu_chat -> {
+                    val intent = Intent(this, ChatActivity::class.java)
                     startActivity(intent)
                     true
                 }
