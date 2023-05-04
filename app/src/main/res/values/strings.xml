@@ -7,16 +7,12 @@
     <string name="nombre_label">Nombre</string>
     <string-array name="Facultades">
         <item>-Seleccione una facultad-</item>
-        <item>Facultad de Ingenieria Mecanica y Electrica</item>
-        <item>Facultad de contaduria Publica y Administraciòn</item>
-        <item>Facultad de Arquitectura</item>
-        <item>Facultad de Ingenieria Civil</item>
-        <item>Facultad de Derecho y Criminologia</item>
-        <item>Facultad de Ciencias Fisico Matematico</item>
-        <item>Facultad de Organizaciòn Deportiva</item>
-        <item>Facultad de Trabajo Social</item>
-        <item>Facultad de Ciencias Quimica</item>
-        <item>Facultad de Ciencias Biologicas</item>
+        <item>FIME</item>
+        <item>FARQ</item>
+        <item>FACPyA</item>
+        <item>FIC</item>
+        <item>FACDyC</item>
+
     </string-array>
     <string-array name="Categorias">
         <item>-Seleccione una categoria-</item>

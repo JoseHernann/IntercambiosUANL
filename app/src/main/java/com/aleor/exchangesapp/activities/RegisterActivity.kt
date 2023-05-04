@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import com.aleor.exchangesapp.R
@@ -20,7 +21,7 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
     private val authProvider = AuthProvider()
     private val clientProvider = ClientProvider()
-
+    var faculty = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +33,24 @@ class RegisterActivity : AppCompatActivity() {
 
         binding.btnGoToLogin.setOnClickListener { goToLogin() }
         binding.btnRegister.setOnClickListener { register() }
+
+        val spinner: Spinner = binding.listFac
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.Facultades,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinner.adapter = adapter
+        }
+        //listener del dropDown
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                faculty = parent.getItemAtPosition(position) as String
+            }
+            override fun onNothingSelected(parent: AdapterView<*>) {
+            }
+        }
     }
 
     private fun register(){
@@ -40,14 +59,15 @@ class RegisterActivity : AppCompatActivity() {
         val password = binding.textFieldPassword.text.toString()
         val confirmPassword = binding.textFieldConfirmPassword.text.toString()
 
-        if(isValidForm(name, email, password, confirmPassword)){
+        if(isValidForm(name, email, password, confirmPassword,faculty)){
 
             authProvider.register(email, password).addOnCompleteListener { it ->
                 if(it.isSuccessful){
                     val client = Client(
                         id = authProvider.getId(),
                         name = name,
-                        email = email
+                        email = email,
+                        faculty = faculty
                     )
                     clientProvider.create(client).addOnCompleteListener {
                         if(it.isSuccessful){
@@ -77,12 +97,20 @@ class RegisterActivity : AppCompatActivity() {
 //        val i = Intent(this, HomeActivity::class.java)
 //        i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
 //        startActivity(i)
-//    }
+//   }
 
 
 
-    //Ingreso de los datos con validaciones en caso de que alguno no sea llenado no se realizara el registro
-    private fun isValidForm (name: String, email: String, password: String, confirmPassword: String): Boolean {
+
+    //Ingreso de los datos con validaciones en caso de que alguno no sea llenado no se realizara el registro 
+    private fun isValidForm (
+        name: String,
+        email: String,
+        password: String,
+        confirmPassword: String,
+        faculty: String
+    ): Boolean {
+
 
         if (name.isEmpty()){
             Toast.makeText(this, "Debes ingresar tu nombre", Toast.LENGTH_SHORT).show()
@@ -106,6 +134,10 @@ class RegisterActivity : AppCompatActivity() {
         }
         if(password.length < 6){
             Toast.makeText(this, "La contraseña debe tener al menos 6 caracteres", Toast.LENGTH_LONG).show()
+        }
+        if(faculty.isEmpty()){
+            Toast.makeText(this, "Porfavor selecciona una facultad", Toast.LENGTH_SHORT).show()
+            return false
         }
         return true
     }

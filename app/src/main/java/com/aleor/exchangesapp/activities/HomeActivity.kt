@@ -5,6 +5,8 @@ import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
+import android.os.Parcel
+import android.os.Parcelable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -27,6 +29,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var productAdapter: ProductAdapter
     private lateinit var binding: ActivityHomeBinding
     val productList = mutableListOf<Product>()
+    var productId = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
@@ -44,7 +47,7 @@ class HomeActivity : AppCompatActivity() {
             .get()
             .addOnSuccessListener { documents ->
                 for (document in documents) {
-                    val productId = document.id
+                    productId = document.id
                     val productData = document.toObject(Product::class.java) //CONFIGURAR LA ACTIVIDAD DE DETALLE AQUI+
                     val product = Product(productId,productData.name,productData.category,productData.faculty)
                     productList.add(product)
@@ -52,8 +55,8 @@ class HomeActivity : AppCompatActivity() {
                 // Configurar adaptador
                 productAdapter = ProductAdapter(productList) { product ->
                     // Abrir actividad de detalle cuando se hace clic en una tarjeta
-                    val intent = Intent(this, FormsActivity::class.java)
-                    //intent.putExtra("Product", product)
+                    val intent = Intent(this, DetailActivity::class.java)
+                    intent.putExtra("productId", product.id)
                     startActivity(intent)
                 }
                 recyclerView.adapter = productAdapter
@@ -101,7 +104,7 @@ class HomeActivity : AppCompatActivity() {
             val name: TextView = itemView.findViewById<TextView>(R.id.name)
             val category: TextView = itemView.findViewById<TextView>(R.id.category)
             val productImage: ImageView = itemView.findViewById(R.id.productImage)
-            val faculty:TextView = itemView.findViewById<TextView>(R.id.fac)
+            private val faculty:TextView = itemView.findViewById<TextView>(R.id.fac)
             fun bind(product: Product) {
                 itemView.setOnClickListener { onItemClick(product) }
                 name.text = product.name
@@ -121,6 +124,41 @@ class HomeActivity : AppCompatActivity() {
                             }
                         }
                     }
+
+                when(product.faculty){
+                    "FIME" -> faculty.setBackgroundResource(R.drawable.rounded_green)
+                    "FACDyC" -> faculty.setBackgroundResource(R.drawable.rounded_green)
+                    "FA" -> faculty.setBackgroundResource(R.drawable.rounded_green)
+                    "FCF" -> faculty.setBackgroundResource(R.drawable.rounded_green)
+
+                    "FFyL" -> faculty.setBackgroundResource(R.drawable.rounded_yellow)
+                    "FTS" -> faculty.setBackgroundResource(R.drawable.rounded_yellow)
+                    "FIC" -> faculty.setBackgroundResource(R.drawable.rounded_yellow)
+                    "FCT" -> faculty.setBackgroundResource(R.drawable.rounded_yellow)
+                    "FAMUS" -> faculty.setBackgroundResource(R.drawable.rounded_yellow)
+
+                    "FARQ" -> faculty.setBackgroundResource(R.drawable.rounded_orange)
+                    "FAV" -> faculty.setBackgroundResource(R.drawable.rounded_orange)
+                    "FCC" -> faculty.setBackgroundResource(R.drawable.rounded_orange)
+                    "FAE" -> faculty.setBackgroundResource(R.drawable.rounded_orange)
+
+                    "FACPyA" -> faculty.setBackgroundResource(R.drawable.rounded_red)
+                    "FCQ" -> faculty.setBackgroundResource(R.drawable.rounded_red)
+                    "FACPyRI" -> faculty.setBackgroundResource(R.drawable.rounded_red)
+                    "FE" -> faculty.setBackgroundResource(R.drawable.rounded_red)
+
+                    "FOD" -> faculty.setBackgroundResource(R.drawable.rounded_blue)
+                    "FCFM" -> faculty.setBackgroundResource(R.drawable.rounded_blue)
+
+                    "FCB" -> faculty.setBackgroundResource(R.drawable.rounded_lightgreen)
+                    "FASPyN" -> faculty.setBackgroundResource(R.drawable.rounded_lightgreen)
+                    "FMVZ" -> faculty.setBackgroundResource(R.drawable.rounded_lightgreen)
+
+                    "FAEN" -> faculty.setBackgroundResource(R.drawable.rounded_lightblue)
+                    "FACMED" -> faculty.setBackgroundResource(R.drawable.rounded_lightblue)
+                    "FAPSI" -> faculty.setBackgroundResource(R.drawable.rounded_lightblue)
+                    "ODONTO" -> faculty.setBackgroundResource(R.drawable.rounded_lightblue)
+                }
             }
         }
 
@@ -141,8 +179,40 @@ class HomeActivity : AppCompatActivity() {
         val id:String? = null,
         val name: String? = null,
         val category: String? = null,
-        val faculty:String? = null
-    )
+        val faculty:String? = null,
+        val state:String? = null,
+        val description: String? = null,
+        val userEmail:String? = null
+    ): Parcelable {
+
+        constructor(parcel: Parcel) : this(
+            parcel.readString()!!,
+            parcel.readString()!!,
+            parcel.readString()!!,
+            parcel.readString()!!
+        )
+
+        override fun writeToParcel(parcel: Parcel, flags: Int) {
+            parcel.writeString(id)
+            parcel.writeString(name)
+            parcel.writeString(category)
+            parcel.writeString(faculty)
+        }
+
+        override fun describeContents(): Int {
+            return 0
+        }
+
+        companion object CREATOR : Parcelable.Creator<Product> {
+            override fun createFromParcel(parcel: Parcel): Product {
+                return Product(parcel)
+            }
+
+            override fun newArray(size: Int): Array<Product?> {
+                return arrayOfNulls(size)
+            }
+        }
+    }
 
     class GridSpacingItemDecoration(private val spanCount: Int, private val spacing: Int, private val includeEdge: Boolean) : RecyclerView.ItemDecoration() {
         override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
@@ -165,6 +235,7 @@ class HomeActivity : AppCompatActivity() {
             }
         }
     }
+
 
 
     //    override fun onCreate(savedInstanceState: Bundle?) {

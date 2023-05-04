@@ -45,9 +45,15 @@
             android:name=".activities.FormsActivity"
             android:exported="false" />
 
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAMwpW9wuqBUpwHMPj0CLQMSVRcSItdgMg"/>
+
+        <activity
+            android:name=".activities.DetailActivity"
+            android:label="Detail Activity" />
+
 
     </application>
 
