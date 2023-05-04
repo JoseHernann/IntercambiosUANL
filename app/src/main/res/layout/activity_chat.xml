@@ -89,7 +89,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:layout_marginBottom="0dp"
+                android:ems="13"
+                android:minHeight="55dp"
+                android:hint="@string/placeholderMsg"
+                android:inputType="textPersonName"
+                android:background="@android:color/transparent" />
+
+            <Button
+                android:id="@+id/chatsend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_violet"
+                android:text="@string/btnSend"
+                android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                android:padding="10dp"
+                android:layout_marginStart="7dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp"
+                android:textColor="@android:color/white"
                 />
 
             <LinearLayout

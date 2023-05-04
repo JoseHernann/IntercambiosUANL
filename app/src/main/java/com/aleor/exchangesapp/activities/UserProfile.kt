@@ -33,30 +33,39 @@ class UserProfile : AppCompatActivity() {
         binding.toolbar.setOnClickListener{
             backToHome()
         }
+        val userNameInterface = binding.profileName
+        val userNameFaculty = binding.profileFaculty
+        val userEmail = binding.profileEmail
 
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
 
-        // Cargar la informacion del usuario
         val user = auth.currentUser
+
         if (user != null) {
-            db.collection("users").document(user.uid).get().addOnSuccessListener { document ->
-                val name = document.getString("name")
-                val email = document.getString("email")
-                val phone = document.getString("phone")
-                val photoUrl = document.getString("photoUrl")
+            db.collection("Clients")
+                .whereEqualTo("id", user.uid)
+                .get()
+                .addOnSuccessListener { querySnapshot ->
+                    println(querySnapshot.documents)
+                    for (document in querySnapshot.documents) {
+                        val name = document.getString("name").toString()
+                        val email = document.getString("email").toString()
+                        val phone = document.getString("faculty").toString()
+                        val photoUrl = document.getString("photoUrl")
 
-                binding.nameTextView.text = name
-                binding.facultyTextView.text = phone
-                binding.emailTextView.text = email
+                        userNameInterface.text = name
+                        userNameFaculty.text = phone
+                        userEmail.text = email
 
-                // Cargar una imagen de perfil desde la galeria
-                if (photoUrl != null) {
-                    Glide.with(this)
-                        .load(photoUrl)
-                        .placeholder(R.drawable.basic_input)
-                        .into(binding.profileimage)
-                }
+                        // Cargar una imagen de perfil desde la galeria
+                        if (photoUrl != null) {
+                            Glide.with(this)
+                                .load(photoUrl)
+                                .placeholder(R.drawable.basic_input)
+                                .into(binding.profileimage)
+                        }
+                    }
             }
         }
 

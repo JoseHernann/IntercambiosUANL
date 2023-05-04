@@ -74,12 +74,13 @@
                 android:layout_marginTop="20dp"/>
 
             <TextView
-                android:id="@+id/name_text_view"
+                android:id="@+id/profileName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                android:textColor="@android:color/white"
-                android:layout_marginTop="8dp"/>
+                android:textColor="@android:color/black" />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -96,11 +97,11 @@
                 android:layout_marginTop="10dp"/>
 
             <TextView
-                android:id="@+id/faculty_text_view"
+                android:id="@+id/profileFaculty"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                android:textColor="@color/grey_type2"
+                android:textColor="@color/black"
                 android:layout_marginTop="8dp"/>
             <View
                 android:layout_width="match_parent"
@@ -118,11 +119,11 @@
                 android:layout_marginTop="10dp"/>
 
             <TextView
-                android:id="@+id/email_text_view"
+                android:id="@+id/profileEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textColor="@color/grey_type2"
+                android:textColor="@color/black"
                 android:layout_marginTop="8dp"/>
             <View
                 android:layout_width="match_parent"
