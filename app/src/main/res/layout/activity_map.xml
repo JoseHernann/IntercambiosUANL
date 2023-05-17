@@ -12,5 +12,29 @@
         android:layout_height="match_parent"
         android:name="com.google.android.gms.maps.SupportMapFragment"/>
 
+    <Button
+        android:id="@+id/btnConnect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Conectarse"
+        android:background="@drawable/rounded_violet"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="50dp"
+        android:layout_marginRight="70dp"
+        android:layout_marginLeft="70dp"
+        />
+    <Button
+        android:id="@+id/btnDisconnect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Desconectarse"
+        android:background="@drawable/rounded_violet"
+        app:backgroundTint="@color/grey"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="50dp"
+        android:layout_marginRight="70dp"
+        android:layout_marginLeft="70dp"
+        android:visibility="gone"/>
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
