@@ -56,6 +56,7 @@ class FormsActivity : AppCompatActivity() {
     private var name:String = ""
     private var description:String = ""
     private var faculty = ""
+    private var available = true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -134,7 +135,8 @@ class FormsActivity : AppCompatActivity() {
             "category" to category,
             "state" to state,
             "userEmail" to userEmail,
-            "faculty" to faculty
+            "faculty" to faculty,
+            "available" to available,
         )
 
         if(name != "" && description != "" && category != "-Seleccione una categoria-" && state != "none"){

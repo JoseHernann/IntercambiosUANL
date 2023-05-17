@@ -54,6 +54,7 @@
             android:name=".activities.DetailActivity"
             android:label="Detail Activity" />
 
+        <activity android:name=".activities.myProductsActivity" />
 
     </application>
 

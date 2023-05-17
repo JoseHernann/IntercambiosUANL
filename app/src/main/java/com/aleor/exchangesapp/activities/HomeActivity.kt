@@ -44,6 +44,7 @@ class HomeActivity : AppCompatActivity() {
         // Obtener lista de productos desde Firebase Firestore
         val db = Firebase.firestore
         db.collection("Products")
+            .whereEqualTo("available",true)
             .get()
             .addOnSuccessListener { documents ->
                 for (document in documents) {
@@ -90,9 +91,9 @@ class HomeActivity : AppCompatActivity() {
                     startActivity(intent)
                     true
                 }R.id.menu_chat -> {
-                    val intent = Intent(this, ChatActivity::class.java)
-                    startActivity(intent)
-                    true
+                val intent = Intent(this, myProductsActivity::class.java)
+                startActivity(intent)
+                true
                 }
                 else -> false
             }
@@ -182,7 +183,8 @@ class HomeActivity : AppCompatActivity() {
         val faculty:String? = null,
         val state:String? = null,
         val description: String? = null,
-        val userEmail:String? = null
+        val userEmail:String? = null,
+        var available:Boolean? = null
     ): Parcelable {
 
         constructor(parcel: Parcel) : this(

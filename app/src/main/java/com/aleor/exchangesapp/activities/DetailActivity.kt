@@ -78,11 +78,6 @@ class DetailActivity: AppCompatActivity() {
         }
 
 
-        println("HOLAAAAA")
-
-
-
-
         val storageRef = Firebase.storage.reference.child("/${productId}")
         storageRef.listAll().addOnSuccessListener { listResult ->
             if (listResult.items.isNotEmpty()) {
