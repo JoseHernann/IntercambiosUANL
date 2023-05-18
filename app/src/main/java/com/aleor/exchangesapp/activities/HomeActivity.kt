@@ -49,7 +49,7 @@ class HomeActivity : AppCompatActivity() {
             .addOnSuccessListener { documents ->
                 for (document in documents) {
                     productId = document.id
-                    val productData = document.toObject(Product::class.java) //CONFIGURAR LA ACTIVIDAD DE DETALLE AQUI+
+                    val productData = document.toObject(Product::class.java)
                     val product = Product(productId,productData.name,productData.category,productData.faculty)
                     productList.add(product)
                 }
@@ -177,7 +177,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     class Product(
-        val id:String? = null,
+        var id:String? = null,
         val name: String? = null,
         val category: String? = null,
         val faculty:String? = null,

@@ -22,25 +22,19 @@
     import com.google.firebase.firestore.SetOptions
     import com.google.firebase.firestore.ktx.firestore
     import com.google.firebase.ktx.Firebase
-    import com.google.firebase.storage.FirebaseStorage
-    import com.google.firebase.storage.StorageReference
+    import com.google.firebase.storage.ktx.storage
 
 
     class myProductsActivity: AppCompatActivity() {
         private lateinit var binding: ActivityMyproductsBinding
         private lateinit var imageRV: RecyclerView
-        private lateinit var imageAdapter: FormsActivity.ImageAdapter
-        private var imagesSelected = false
-        var imagesGlobal = mutableListOf<Uri>()
         private var productList = mutableListOf<HomeActivity.Product>()
         val emailCurrentUser = FirebaseAuth.getInstance().currentUser?.email.toString()
-        private val storageReference: StorageReference = FirebaseStorage.getInstance().reference
 
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             binding = ActivityMyproductsBinding.inflate(layoutInflater)
             setContentView(binding.root)
-            // Inicializar RecyclerView
             imageRV = binding.rvProducts
 
             val layoutManager = LinearLayoutManager(this)
@@ -54,6 +48,7 @@
                     productList.clear()
                     for (document in documents) {
                         val product = document.toObject(HomeActivity.Product::class.java)
+                        product.id = document.id
                         productList.add(product)
                     }
                     val adapter = MyProductsAdapter(productList)
@@ -110,8 +105,6 @@
 
             override fun onBindViewHolder(holder: ViewHolder, position: Int) {
                 val product = productList[position]
-                val imageRef = storageReference.child("/${product.id}") // Ajusta la ruta de almacenamiento según tu estructura de almacenamiento de imágenes
-
                 holder.productName.text = product.name
                 holder.availableSwitch.setOnCheckedChangeListener(null)
                 holder.availableSwitch.isChecked = (switchStates[position] ?: product.available) == true
@@ -141,9 +134,18 @@
                         }
                 }
 
-                Glide.with(holder.itemView)
-                    .load(imageRef)
-                    .into(holder.productImage)
+                //imagenes de los productos
+                val storageRef = Firebase.storage.reference.child("/${product.id}")
+                storageRef.listAll().addOnSuccessListener { listResult ->
+                    if (listResult.items.isNotEmpty()) {
+                        val firstImageRef = listResult.items.first()
+                        firstImageRef.downloadUrl.addOnSuccessListener { uri ->
+                            Glide.with(holder.itemView)
+                                .load(uri)
+                                .into(holder.productImage)
+                        }
+                    }
+                }
 
 
             }

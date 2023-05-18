@@ -39,11 +39,10 @@ class DetailActivity: AppCompatActivity() {
         var userEmail:String = ""
         var faculty = ""
         var name = ""
+
         binding.back.setOnClickListener{
             backToHome()
         }
-
-
 
 
         val productId = intent.getStringExtra("productId")
