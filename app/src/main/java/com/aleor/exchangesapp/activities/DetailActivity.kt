@@ -26,6 +26,9 @@ class DetailActivity: AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.ChatBtn.setOnClickListener { goToChat() }
+
+
 //        Elementos graficos del detalle
         val mainPic = binding.mainPic
         val productName = binding.productName
@@ -89,15 +92,12 @@ class DetailActivity: AppCompatActivity() {
             }
         }
 
-
-
-
-
-
-
-
-
     }
+    private fun goToChat(){
+        val intent = Intent(this, ChatActivity::class.java)
+        startActivity(intent)
+    }
+
     private fun backToHome(){
         val intent =  Intent(this, HomeActivity::class.java)
         startActivity(intent)

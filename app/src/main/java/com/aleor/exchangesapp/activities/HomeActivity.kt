@@ -1,6 +1,5 @@
 package com.aleor.exchangesapp.activities
 
-
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.Rect
@@ -91,7 +90,7 @@ class HomeActivity : AppCompatActivity() {
                     startActivity(intent)
                     true
                 }R.id.menu_chat -> {
-                val intent = Intent(this, myProductsActivity::class.java)
+                val intent = Intent(this, ItemChatActivity::class.java)
                 startActivity(intent)
                 true
                 }

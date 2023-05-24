@@ -40,6 +40,7 @@
             android:fontFamily="@font/poppinssemibold"/>
 
         <Button
+            android:id="@+id/ChatBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Empezar chat"
