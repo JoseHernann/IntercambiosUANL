@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
 import com.aleor.exchangesapp.R
 import com.aleor.exchangesapp.databinding.ActivityUserProfileBinding
 import com.bumptech.glide.Glide
@@ -19,6 +20,7 @@ class UserProfile : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
     private lateinit var bottomNavigationView: BottomNavigationView
+
 
     companion object {
         private const val REQUEST_IMAGE_CHOOSER = 101
@@ -64,10 +66,29 @@ class UserProfile : AppCompatActivity() {
             }
         }
 
-        //Boton de regreso
-        binding.toolbar.setOnClickListener{
+
+        //LOGOUT DE LA APP
+        val exitIcon: ImageView = findViewById(R.id.exit_icon)
+        exitIcon.setOnClickListener {
+            // Cerrar sesión utilizando Firebase Auth
+            FirebaseAuth.getInstance().signOut()
+
+            // Redirigir al usuario a la pantalla de inicio de sesión
+            val intent = Intent(this, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+            finish()
+        }
+
+        //Boton de regreso a Home
+        binding.backButton.setOnClickListener{
             backToHome()
         }
+
+        binding.productBtn.setOnClickListener{
+            GoToProduct()
+        }
+
         val userNameInterface = binding.profileName
         val userNameFaculty = binding.profileFaculty
         val userEmail = binding.profileEmail
@@ -113,9 +134,6 @@ class UserProfile : AppCompatActivity() {
             openImageChooser()
         }
     }
-
-
-
     private fun openImageChooser() {
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
@@ -124,6 +142,11 @@ class UserProfile : AppCompatActivity() {
 
     private fun backToHome(){
         val intent =  Intent(this, HomeActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun GoToProduct(){
+        val intent = Intent(this, myProductsActivity::class.java)
         startActivity(intent)
     }
 
@@ -142,7 +165,7 @@ class UserProfile : AppCompatActivity() {
                             storageRef.downloadUrl.addOnSuccessListener { uri ->
                                 val photoUrl = uri.toString()
 
-                                db.collection("users").document(user.uid)
+                                db.collection("Clients").document(user.uid)
                                     .update("photoUrl", photoUrl)
                                     .addOnSuccessListener {
                                         Glide.with(this@UserProfile)
