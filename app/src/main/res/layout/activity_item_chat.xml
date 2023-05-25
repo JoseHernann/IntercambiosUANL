@@ -14,14 +14,20 @@
         android:textSize="24sp"
         android:textStyle="bold" />
 
-    <ListView
-        android:id="@+id/chatListView"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:divider="@null"
-        android:dividerHeight="0dp" />
+        android:layout_marginTop="16dp">
 
+        <ListView
+            android:id="@+id/chatListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:background="@drawable/card_background" />
 
+    </FrameLayout>
 
 </LinearLayout>

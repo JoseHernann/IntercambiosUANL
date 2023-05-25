@@ -78,6 +78,8 @@ class ChatActivity : AppCompatActivity() {
         messagesReference.addValueEventListener(messageValueEventListener)
     }
 
+    //La funcion se encarga de crear un nuevo chat en la base de datos. Se obtiene la instancia y luego se hace referencia
+
     private fun createNewChat() {
         firebaseDatabase = FirebaseDatabase.getInstance()
         val chatsReference = firebaseDatabase.reference.child("chats")
