@@ -8,6 +8,7 @@ import android.os.Bundle
 import com.aleor.exchangesapp.R
 import com.aleor.exchangesapp.databinding.ActivityUserProfileBinding
 import com.bumptech.glide.Glide
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
@@ -17,6 +18,7 @@ class UserProfile : AppCompatActivity() {
     private lateinit var binding: ActivityUserProfileBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
+    private lateinit var bottomNavigationView: BottomNavigationView
 
     companion object {
         private const val REQUEST_IMAGE_CHOOSER = 101
@@ -28,6 +30,39 @@ class UserProfile : AppCompatActivity() {
         binding = ActivityUserProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //FUNCIONALIDAD DEL BOTTOM MENU BAR
+        bottomNavigationView = findViewById(R.id.bottom_navigation_view)
+        bottomNavigationView.selectedItemId = R.id.menu_profile
+
+        bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
+            when(menuItem.itemId){
+                R.id.menu_home -> {
+                    val intent = Intent(this, HomeActivity::class.java)
+                    startActivity(intent)
+                    true
+                }R.id.menu_map -> {
+                val intent = Intent(this, MapActivity::class.java)
+                startActivity(intent)
+                true
+            }
+                R.id.menu_add -> {
+                    val intent = Intent(this, FormsActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                R.id.menu_profile -> {
+
+                    val intent = Intent(this, UserProfile::class.java)
+                    startActivity(intent)
+                    true
+                }R.id.menu_chat -> {
+                val intent = Intent(this, ItemChatActivity::class.java)
+                startActivity(intent)
+                true
+            }
+                else -> false
+            }
+        }
 
         //Boton de regreso
         binding.toolbar.setOnClickListener{
@@ -69,7 +104,7 @@ class UserProfile : AppCompatActivity() {
             }
         }
 
-            //Accesos para cambiar la imagen de perfil
+            //Accesos necesarios para cambiar la foto de perfil
         binding.profileimage.setOnClickListener {
             openImageChooser()
         }

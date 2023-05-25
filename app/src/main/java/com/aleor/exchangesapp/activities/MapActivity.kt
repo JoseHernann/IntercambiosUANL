@@ -1,6 +1,7 @@
 package com.aleor.exchangesapp.activities
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.Resources
 import android.graphics.Bitmap
@@ -26,6 +27,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MapActivity : AppCompatActivity(), OnMapReadyCallback, Listener {
 
@@ -34,12 +36,49 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, Listener {
     private var easyWayLocation: EasyWayLocation? = null
     private var myLocationLatLng: LatLng? = null
     private var markerPerson: Marker? = null
+    private lateinit var bottomNavigationView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMapBinding.inflate(layoutInflater)
         setContentView(binding.root)
         window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+
+        //Bottom Navigation
+        bottomNavigationView = findViewById(R.id.bottom_navigation_view)
+        bottomNavigationView.selectedItemId = R.id.menu_map
+
+        bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
+            when(menuItem.itemId){
+                R.id.menu_home -> {
+                    val intent = Intent(this, HomeActivity::class.java)
+                    startActivity(intent)
+                    true
+                }R.id.menu_map -> {
+                val intent = Intent(this, MapActivity::class.java)
+                startActivity(intent)
+                true
+            }
+                R.id.menu_add -> {
+                    val intent = Intent(this, FormsActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                R.id.menu_profile -> {
+
+                    val intent = Intent(this, UserProfile::class.java)
+                    startActivity(intent)
+                    true
+                }R.id.menu_chat -> {
+                val intent = Intent(this, ItemChatActivity::class.java)
+                startActivity(intent)
+                true
+            }
+                else -> false
+            }
+        }
+
+
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
