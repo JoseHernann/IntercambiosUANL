@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">UNOxOTRO</string>
+    <string name="login">¿Listo para comenzar?</string>
+    <string name="LogIn">INICIAR SESION</string>
+    <string name="NoUser">¿No tienes cuenta?</string>
+    <string name="SignUp">REGISTRARSE</string>
+    <string name="nombre_label">Nombre</string>
+    <string-array name="Facultades">
+        <item>-Seleccione una facultad-</item>
+        <item>FIME</item>
+        <item>FARQ</item>
+        <item>FACPyA</item>
+        <item>FIC</item>
+        <item>FACDyC</item>
+
+    </string-array>
+    <string-array name="Categorias">
+        <item>-Seleccione una categoria-</item>
+        <item>Tecnologia</item>
+        <item>Papeleria</item>
+        <item>Literatura</item>
+        <item>Deporte</item>
+        <item>Gaming</item>
+        <item>Plantas</item>
+    </string-array>
+    <string name="placeholderMsg">message...</string>
+    <string name="btnSend">Enviar</string>
+</resources>

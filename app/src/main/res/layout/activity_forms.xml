@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+            android:layout_height="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/greyBackground"
+            android:orientation="vertical"
+
+            >
+
+            <ImageButton
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/baseline_arrow_back_ios_new_24"
+                android:padding="5dp"
+                android:layout_margin="9dp"
+                android:background="@drawable/basic_input"
+                />
+            <TextView
+                android:id="@+id/tvLabelNombre"
+                style="@style/AppTheme.BasicLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/nombre_label"
+                app:layout_constraintBottom_toTopOf="@+id/etProductName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+                />
+
+            <EditText
+                android:id="@+id/etProductName"
+                style="@style/AppTheme.BasicInput"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:autofillHints="nombre"
+                app:layout_constraintBottom_toTopOf="@id/tvLabelPhotos"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvLabelNombre"
+                android:inputType="text" />
+
+            <TextView
+                android:id="@+id/tvLabelPhotos"
+                style="@style/AppTheme.BasicLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Imagenes del producto"
+                app:layout_constraintBottom_toTopOf="@id/pickImage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etProductName"
+
+                />
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/imageRV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="15dp"
+                        style="@style/AppTheme.BasicInput"
+                        />
+
+                    <ImageButton
+                        android:id="@+id/pickImage"
+                        style="@style/AppTheme.BasicInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="170dp"
+                        android:src="@drawable/addpic_icon"
+                        />
+                </FrameLayout>
+
+            <ProgressBar
+                android:id="@+id/loader"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="77dp"
+                android:visibility="gone"
+                />
+
+            <TextView
+                android:id="@+id/tvLabelDescription"
+                style="@style/AppTheme.BasicLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Descripción"
+                />
+
+            <EditText
+                android:id="@+id/etDescription"
+                style="@style/AppTheme.BasicInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textMultiLine"
+                android:minHeight="70dp" />
+
+            <TextView
+                android:id="@+id/tvLabelCategoria"
+                style="@style/AppTheme.BasicLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Categoria"
+                />
+
+            <Spinner
+                android:id="@+id/list_cat"
+                style="@style/AppTheme.BasicInput"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:spinnerMode="dropdown" />
+
+            <TextView
+                android:id="@+id/tvLabelEstado"
+                style="@style/AppTheme.BasicLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Estado del articulo" />
+
+
+            <RadioGroup
+                android:id="@+id/grupEstado"
+                android:layout_width="366dp"
+                android:layout_height="wrap_content"
+
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioNuevo"
+                    style="@style/AppTheme.SelectableButon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:layout_marginBottom="2dp"
+                    android:padding="5dp"
+                    android:text="Nuevo"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textColor="#707070"
+
+
+                    />
+
+                <RadioButton
+                    android:id="@+id/radioSeminuevo"
+                    style="@style/AppTheme.SelectableButon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:padding="5dp"
+                    android:text="Seminuevo"
+                    android:textAllCaps="false"
+                    android:textColor="#707070" />
+
+                <RadioButton
+                    android:id="@+id/radioUsado"
+                    style="@style/AppTheme.SelectableButon"
+                    android:layout_width="93dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:layout_marginBottom="2dp"
+                    android:text="Usado"
+                    android:textAllCaps="false"
+                    android:textColor="#707070" />
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/btnGuardar"
+                style="@style/AppTheme.PrimaryButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/basic_input"
+                android:text="Guardar" />
+
+
+        </LinearLayout>
+
+    </ScrollView>

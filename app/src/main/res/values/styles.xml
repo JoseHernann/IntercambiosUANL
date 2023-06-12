@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme">
+        <item name="colorPrimary">@color/primPurple</item>
+        <item name="colorSecondary">@color/strongPurple</item>
+        <item name="colorAccent">@color/softPurple</item>
+    </style>
+
+
+    <style name="AppTheme.PrimaryButtonStyle">
+        <item name="android:backgroundTint">@color/softPurple</item>
+        <item name="android:radius">40dp</item>
+        <item name="android:textSize">@dimen/textBtn</item>
+        <item name="android:fontFamily">@font/poppinsregular</item>
+        <item name="android:layout_margin">15dp</item>
+    </style>
+    
+    <style name="AppTheme.BasicInput">
+        <item name="android:background">@drawable/basic_input</item>
+        <item name="android:layout_marginLeft">@dimen/marginInput</item>
+        <item name="android:layout_marginRight">@dimen/marginInput</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:fontFamily">@font/poppinsregular</item>
+    </style>
+
+    <style name="AppTheme.SelectableButon">
+        <item name="android:background">@drawable/button_selector</item>
+        <item name="android:radius">40dp</item>
+        <item name="android:textSize">@dimen/textBtn</item>
+        <item name="android:fontFamily">@font/poppinsregular</item>
+        <item name="android:layout_margin">15dp</item>
+    </style>
+
+    <style name="AppTheme.BasicLabel">
+        <item name="android:textSize">@dimen/label</item>
+        <item name="android:fontFamily">@font/poppinsregular</item>
+        <item name="android:layout_marginStart">15dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+    </style>
+    
+</resources>
